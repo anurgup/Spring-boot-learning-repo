@@ -1,0 +1,16 @@
+This document contains details about developed spring boot webservices that could be used for future references if needed.
+
+1. eurekaServiceServer contains the code related to services integration.
+2. edge-service,beer-catalog-service are integrated with the help eurekaServiceServer.
+3. CassandraBoot integration is perfect example of cassandra and spring boot integration.
+4. AnotherService can be refered for RestTemplate example.
+
+
+Referred Sources:
+
+for 4th : http://myjourneyonjava.blogspot.com/2015/08/restful-api-using-spring-boot-and.html.
+for 2nd : https://developer.okta.com/blog/2017/06/15/build-microservices-architecture-spring-boot
+for new project : https://start.spring.io/
+for consuming webservice in spring boot : http://www.littlebigextra.com/consume-rest-based-web-service-spring-boot/
+
+Thats it. 
