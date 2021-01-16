@@ -1,0 +1,763 @@
+swagger: '2.0'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+  termsOfService: 'urn:tos'
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+host: 'localhost:8080'
+basePath: /swagger2-demo
+tags:
+  - name: swagger-2-demo-rest-controller
+    description: REST Apis related to Student Entity!!!!
+paths:
+  '/getStudent/{name}':
+    get:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    head:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingHEAD
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    options:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingOPTIONS
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+        - getStudent
+      summary: 'Get specific Student in the System '
+      operationId: getStudentUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: name
+          in: path
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  '/getStudentByClass/{cls}':
+    get:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    head:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingHEAD
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    options:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingOPTIONS
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+        - swagger-2-demo-rest-controller
+      summary: getStudentByClass
+      operationId: getStudentByClassUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: cls
+          in: path
+          description: cls
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  '/getStudentByCountry/{country}':
+    get:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    head:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingHEAD
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    options:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingOPTIONS
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+        - getStudentByCountry
+      summary: 'Get specific Student By Country in the System '
+      operationId: getStudentByCountryUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: country
+          in: path
+          description: country
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /getStudents:
+    get:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+    head:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingHEAD
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '204':
+          description: No Content
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+    post:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '201':
+          description: Created
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+    put:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '201':
+          description: Created
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+    delete:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '204':
+          description: No Content
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+    options:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingOPTIONS
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '204':
+          description: No Content
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+    patch:
+      tags:
+        - getStudents
+      summary: 'Get list of Students in the System '
+      operationId: getStudentsUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Suceess|OK
+          schema:
+            $ref: '#/definitions/Iterable'
+        '204':
+          description: No Content
+        '401':
+          description: not authorized!
+        '403':
+          description: forbidden!!!
+        '404':
+          description: not found!!!
+definitions:
+  Iterable:
+    type: object
+  Student:
+    type: object
+    required:
+      - cls
+      - country
+      - name
+    properties:
+      cls:
+        type: string
+        description: test class
+      country:
+        type: string
+        description: test country
+      name:
+        type: string
+        description: test name
