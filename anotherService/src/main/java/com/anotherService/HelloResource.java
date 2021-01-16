@@ -20,7 +20,9 @@ public class HelloResource {
 
    @GetMapping
    public String hello(){
-        String url = "http://ItemCatalog:8766/rest/hello/server";
-        return restTemplate.getForObject(url,String.class);
+     //   String url = "http://ItemCatalog:8766/rest/hello/server";
+
+
+        return "restTemplate.getForObject(url,String.class)";
     }
 }

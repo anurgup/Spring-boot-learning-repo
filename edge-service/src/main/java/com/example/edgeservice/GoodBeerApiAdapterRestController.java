@@ -15,33 +15,21 @@ import java.util.stream.*;
 @RequestMapping
 class GoodBeerApiAdapterRestController {
 
-    private final BeerClient beerClient;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    public GoodBeerApiAdapterRestController(BeerClient beerClient) {
-        this.beerClient = beerClient;
-    }
 
     @GetMapping("/good-beers")
-    public Collection<Beer> goodBeers() {
-        return beerClient.readBeers()
-                .getContent()
-                .stream()
-                .filter(this::isGreat)
-                .collect(Collectors.toList());
+    public String goodBeers() {
+        return "beers are really good";
     }
 
-    @GetMapping("/testService")
+   /* @GetMapping("/testService")
     public String hello(){
         String url = "http://localhost:8080/employee/";
         return restTemplate.getForObject(url,String.class);
-    }
+    }*/
 
-    private boolean isGreat(Beer beer) {
+    /*private boolean isGreat(Beer beer) {
         return !beer.getName().equals("Budweiser") &&
                 !beer.getName().equals("Coors Light") &&
                 !beer.getName().equals("PBR");
-    }
+    }*/
 }
