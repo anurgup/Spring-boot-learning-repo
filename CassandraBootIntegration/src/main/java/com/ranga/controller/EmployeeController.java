@@ -3,9 +3,13 @@ package com.ranga.controller;
 /**
  * Created by anurag on 05/03/19.
  */
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,5 +57,22 @@ public class EmployeeController {
     @RequestMapping(value = "/employee", method = RequestMethod.PUT)
     Employee update(@RequestBody Employee employee) {
         return employeeService.updateEmployee(employee);
+    }
+
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.PATCH)
+    ResponseEntity<?> patch(@PathVariable("id") int id, @RequestBody Map<String, Object> updates) {
+        if (updates.containsKey("age")) {
+            int age = (Integer) updates.get("age");
+            if (age < 21) {
+                Map<String, String> error = new HashMap<>();
+                error.put("error", "Age cannot be less than 21 years");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            }
+        }
+        Employee patched = employeeService.patchEmployee(id, updates);
+        if (patched == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(patched);
     }
 }

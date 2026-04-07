@@ -4,6 +4,7 @@ package com.ranga.service;
  * Created by anurag on 05/03/19.
  */
 import java.util.List;
+import java.util.Map;
 
 import com.ranga.entity.Employee;
 
@@ -32,7 +33,6 @@ public interface EmployeeService {
      * @param employee
      * @return {@link Employee}
      */
-
     public Employee updateEmployee(Employee employee);
 
     /**
@@ -46,4 +46,12 @@ public interface EmployeeService {
      * @return
      */
     public List<Employee> getAllEmployees();
+
+    /**
+     * Partially update the Employee Information using Id
+     * @param id
+     * @param updates
+     * @return {@link Employee}
+     */
+    public Employee patchEmployee(int id, Map<String, Object> updates);
 }
