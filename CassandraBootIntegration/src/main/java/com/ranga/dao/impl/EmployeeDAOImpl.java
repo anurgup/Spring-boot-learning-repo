@@ -4,6 +4,7 @@ package com.ranga.dao.impl;
  * Created by anurag on 05/03/19.
  */
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,12 +25,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee createEmployee(Employee employee) {
+        employee.setIsActive(1);
         return myCassandraTemplate.create(employee);
     }
 
     @Override
     public Employee getEmployee(int id) {
-        return myCassandraTemplate.findById(id, Employee.class);
+        Employee employee = myCassandraTemplate.findById(id, Employee.class);
+        if (employee != null && employee.getIsActive() == 0) {
+            return null;
+        }
+        return employee;
     }
 
     @Override
@@ -39,11 +45,18 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void deleteEmployee(int id) {
-        myCassandraTemplate.deleteById(id, Employee.class);
+        Employee employee = myCassandraTemplate.findById(id, Employee.class);
+        if (employee != null) {
+            employee.setIsActive(0);
+            myCassandraTemplate.update(employee, Employee.class);
+        }
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-        return myCassandraTemplate.findAll(Employee.class);
+        List<Employee> allEmployees = myCassandraTemplate.findAll(Employee.class);
+        return allEmployees.stream()
+                .filter(emp -> emp.getIsActive() == 1)
+                .collect(Collectors.toList());
     }
 }
