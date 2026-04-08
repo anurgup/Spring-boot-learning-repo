@@ -27,6 +27,9 @@ public class Employee {
     @Column(value = "salary")
     private float salary;
 
+    @Column(value = "is_active")
+    private int isActive = 1;
+
     public Employee() {
         super();
     }
@@ -37,6 +40,7 @@ public class Employee {
         this.name = name;
         this.age = age;
         this.salary = salary;
+        this.isActive = 1;
     }
 
     public long getId() {
@@ -71,9 +75,17 @@ public class Employee {
         this.salary = salary;
     }
 
+    public int getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
+    }
+
     @Override
     public String toString() {
         return "Employee [id=" + id + ", name=" + name + ", age=" + age
-                + ", salary=" + salary + "]";
+                + ", salary=" + salary + ", isActive=" + isActive + "]";
     }
 }

@@ -4,6 +4,7 @@ package com.ranga.service.impl;
  * Created by anurag on 05/03/19.
  */
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,4 +56,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDAO.getAllEmployees();
     }
 
+    @Override
+    public Employee patchEmployee(int id, Map<String, Object> updates) {
+        Employee employee = employeeDAO.getEmployee(id);
+        if (employee == null) {
+            return null;
+        }
+        if (updates.containsKey("name")) {
+            employee.setName((String) updates.get("name"));
+        }
+        if (updates.containsKey("age")) {
+            employee.setAge((Integer) updates.get("age"));
+        }
+        if (updates.containsKey("salary")) {
+            Object salaryObj = updates.get("salary");
+            if (salaryObj instanceof Number) {
+                employee.setSalary(((Number) salaryObj).floatValue());
+            }
+        }
+        return employeeDAO.updateEmployee(employee);
+    }
 }
