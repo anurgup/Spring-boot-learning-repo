@@ -24,15 +24,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDAO employeeDAO;
 
-    /**
-     * Default Constructor
-     */
     public EmployeeServiceImpl() {
         super();
     }
 
     @Override
     public Employee createEmployee(Employee employee) {
+        if (employee.getName() != null) {
+            employee.setName(employee.getName().toLowerCase());
+        }
         return employeeDAO.createEmployee(employee);
     }
 
@@ -43,6 +43,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Employee employee) {
+        if (employee.getName() != null) {
+            employee.setName(employee.getName().toLowerCase());
+        }
         return employeeDAO.updateEmployee(employee);
     }
 
@@ -63,7 +66,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             return null;
         }
         if (updates.containsKey("name")) {
-            employee.setName((String) updates.get("name"));
+            String name = (String) updates.get("name");
+            if (name != null) {
+                employee.setName(name.toLowerCase());
+            }
         }
         if (updates.containsKey("age")) {
             employee.setAge((Integer) updates.get("age"));
