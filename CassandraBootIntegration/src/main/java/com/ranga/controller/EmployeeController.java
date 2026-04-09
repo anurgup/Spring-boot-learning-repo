@@ -44,6 +44,14 @@ public class EmployeeController {
             error.put("error", errorMessage);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
         }
+        if (employee.getName() != null) {
+            String normalizedName = employee.getName().toLowerCase();
+            if (!normalizedName.matches("^[a-z\\s]+$")) {
+                Map<String, String> error = new HashMap<>();
+                error.put("error", "Name must contain only alphabets and spaces, no numbers or special characters allowed");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            }
+        }
         return ResponseEntity.ok(employeeService.createEmployee(employee));
     }
 
@@ -79,10 +87,14 @@ public class EmployeeController {
         }
         if (updates.containsKey("name")) {
             String name = (String) updates.get("name");
-            if (name != null && !name.matches("^[a-zA-Z\\s]+$")) {
-                Map<String, String> error = new HashMap<>();
-                error.put("error", "Name must contain only alphabets and spaces, no numbers or special characters allowed");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            if (name != null) {
+                String normalizedName = name.toLowerCase();
+                if (!normalizedName.matches("^[a-z\\s]+$")) {
+                    Map<String, String> error = new HashMap<>();
+                    error.put("error", "Name must contain only alphabets and spaces, no numbers or special characters allowed");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+                }
+                updates.put("name", name);
             }
         }
         Employee patched = employeeService.patchEmployee(id, updates);

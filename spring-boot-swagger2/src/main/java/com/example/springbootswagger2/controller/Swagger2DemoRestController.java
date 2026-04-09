@@ -33,7 +33,6 @@ public class Swagger2DemoRestController {
 			@ApiResponse(code = 401, message = "not authorized!"), 
 			@ApiResponse(code = 403, message = "forbidden!!!"),
 			@ApiResponse(code = 404, message = "not found!!!") })
-
 	@RequestMapping(value = "/getStudents")
 	public List<Student> getStudents() {
 		return students;
@@ -42,23 +41,30 @@ public class Swagger2DemoRestController {
 	@ApiOperation(value = "Get specific Student in the System ", response = Student.class, tags = "getStudent")
 	@RequestMapping(value = "/getStudent/{name}")
 	public Student getStudent(@PathVariable(value = "name") String name) {
-		return students.stream().filter(x -> x.getName().equalsIgnoreCase(name)).collect(Collectors.toList()).get(0);
+		String normalizedName = name.toLowerCase();
+		return students.stream()
+				.filter(x -> x.getName().toLowerCase().equals(normalizedName))
+				.collect(Collectors.toList()).get(0);
 	}
 
 	@ApiOperation(value = "Get specific Student By Country in the System ", response = Student.class, tags = "getStudentByCountry")
 	@RequestMapping(value = "/getStudentByCountry/{country}")
 	public List<Student> getStudentByCountry(@PathVariable(value = "country") String country) {
 		System.out.println("Searching Student in country : " + country);
-		List<Student> studentsByCountry = students.stream().filter(x -> x.getCountry().equalsIgnoreCase(country))
+		String normalizedCountry = country.toLowerCase();
+		List<Student> studentsByCountry = students.stream()
+				.filter(x -> x.getCountry().toLowerCase().equals(normalizedCountry))
 				.collect(Collectors.toList());
 		System.out.println(studentsByCountry);
 		return studentsByCountry;
 	}
 
-	// @ApiOperation(value = "Get specific Student By Class in the System ",response = Student.class,tags="getStudentByClass")
 	@RequestMapping(value = "/getStudentByClass/{cls}")
 	public List<Student> getStudentByClass(@PathVariable(value = "cls") String cls) {
-		return students.stream().filter(x -> x.getCls().equalsIgnoreCase(cls)).collect(Collectors.toList());
+		String normalizedCls = cls.toLowerCase();
+		return students.stream()
+				.filter(x -> x.getCls().toLowerCase().equals(normalizedCls))
+				.collect(Collectors.toList());
 	}
 
 }
